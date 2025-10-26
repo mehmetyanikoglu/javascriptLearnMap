@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <a href="./index.html">
+        <button>Anasayfa</button>
+    </a>
+    <br /><br /><hr><br />
+
+    <h1>Hesap Makinesi</h1>
+
+    <input type="number" id="veriGirisi"
+        placeholder="0"><!--veri string olduğu için number veri tipine çevir ve .value kullan -->
+    <p>Sonuc: <span id="sonuc">0</span></p>
+    <button id="hesapla">hesapla</button>
+    <button id="reset">AC</button><br /><br />
+    <button id="topla">+</button>
+    <button id="cikar">-</button>
+    <button id="bolme">/</button>
+    <button id="carpma">x</button>
+    <button id="faktoriyel">n!</button><br /><br />
+    <button id="eulerSayisi">e</button>
+    <button id="piSayisi">π</button>
+    <button id="usluSayi">xʸ</button>
+    <button id="karekok">√x</button>
+    <button id="kupkok">∛x</button>
+
+    <br /><br />
+    <button id="btn1" class="number-btn">1</button>
+    <button id="btn2" class="number-btn">2</button>
+    <button id="btn3" class="number-btn">3</button>
+    <button id="btn4" class="number-btn">4</button>
+    <button id="btn5" class="number-btn">5</button>
+    <button id="btn6" class="number-btn">6</button>
+    <button id="btn7" class="number-btn">7</button>
+    <button id="btn8" class="number-btn">8</button>
+    <button id="btn9" class="number-btn">9</button>
+    <button id="btn0" class="number-btn">0</button>
+
+    <script type="module" src="/src/backend/calculator.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+.test{
+    margin-left: 40px;
+}
+
+.center {
+  display: grid;
+  place-items: center;
+}
+
+.shadowProperty{
+  box-shadow: 5px 10px 18px #888888;
+  background-color: #fffffff5!important;
+}
+
+.navbar{
+  background-color: rgb(24, 24, 24);
+}
+
+.baslik{
+  margin-top: 100px;
+}
