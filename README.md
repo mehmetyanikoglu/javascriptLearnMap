@@ -2,6 +2,10 @@
 
 Bu repo, çeşitli JavaScript, HTML ve CSS mini projelerini içermektedir. Her proje, belirli bir JavaScript konseptini veya web geliştirme tekniğini uygulamak için tasarlanmıştır.
 
+## Canlı Demo
+
+Projenin Netlify üzerinde yayınlanmış canlı versiyonuna **[BURADAN ULAŞABİLİRSİNİZ](https://68fe6015ab05ba00088cb608--kezateam.netlify.app/)**.
+
 ## Projeler
 
 Bu koleksiyonda aşağıdaki mini uygulamalar bulunmaktadır:
