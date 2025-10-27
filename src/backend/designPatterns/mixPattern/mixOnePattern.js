@@ -1,27 +1,26 @@
 import app from "../singletonPattern/singletonPatternIndex.js";
   // --- REGISTRY PATTERN (Kayıt Defteri Kalıbı) & ITERATOR PATTERN (Yineleyici Kalıbı) ---
-        // Bütün efekt sınıflarını toplayacağımız bir nevi muhtar azası.
-        // Adı 'sinifKoleksiyonu', kendisi tam bir görev adamı.
+        // Tüm efekt sınıflarını merkezi bir yerde toplamak için kullanılır.
         class sinifKoleksiyonu {
-            // Map kullanıyoruz ki "bu kimdi ya?" diye aratması kolay olsun.
-            // Yapısı şöyle bir şey: { 'kalin' => { class: kalin, title: 'Kalın' } }
+            // Map veri yapısı, sınıflara anahtarları (isimleri) üzerinden hızlı erişim sağlar.
+            // Örnek yapı: { 'kalin' => { class: kalin, title: 'Kalın' } }
             constructor() {
                 this.siniflar = new Map();
             }
 
-            // Yeni gelen sınıfı ve başlığını kütüğe işliyor.
+            // Yeni bir sınıfı ve başlığını koleksiyona ekler.
             ekle(sinif, baslik) {
                 this.siniflar.set(sinif.name, { class: sinif, title: baslik });
             }
 
-            // "Bana 'kalin' lazım!" dediğinde sınıfın kendisini bulup getirir.
+            // Verilen isme göre ilgili sınıfı koleksiyondan getirir.
             sinifGetir(isim) {
                 return this.siniflar.get(isim)?.class;
             }
 
             // --- ITERATOR PATTERN (Yineleyici Kalıbı) ---
-            // Bu sihirli metot sayesinde 'for...of' ile koleksiyonun içinde fink atabiliyoruz.
-            // Bize bütün sınıfların isimlerini (key'lerini) sırayla veriyor.
+            // Bu metot, sınıfın 'for...of' döngüsüyle kullanılabilmesini sağlar (iterable protocol).
+            // Koleksiyondaki tüm sınıfların anahtarlarını (isimlerini) bir iterator olarak döndürür.
             [Symbol.iterator]() {
                 return this.siniflar.keys();
             }
@@ -30,16 +29,16 @@ import app from "../singletonPattern/singletonPatternIndex.js";
         const koleksiyon = new sinifKoleksiyonu();
 
         // --- REGISTRY PATTERN (Kayıt Defteri Kalıbı) - Devamı ---
-        // Bütün efektlerin atası, soyadı kanunu gibi bir şey.
+        // Tüm efekt sınıfları için ortak bir temel sınıf.
         class base {
-            // Bu metot sayesinde her sınıf doğar doğmaz kendini 'koleksiyon'a yazdırıyor.
+            // Sınıfların kendi kendini koleksiyona kaydetmesi için statik bir metot.
             static kayit(sinif, baslik) {
                 koleksiyon.ekle(sinif, baslik);
             }
         }
 
         // --- REGISTRY PATTERN: Self-Registration (Sınıfların Kendi Kendini Kaydetmesi) ---
-        // Aşağıdaki her bir efekt sınıfı, 'static' blok içinde kendini merkezi 'koleksiyon'a kaydeder.
+        // Her efekt sınıfı, 'static' blok içinde kendini merkezi 'koleksiyon'a kaydeder.
         class kalin extends base {
             static {
                 base.kayit(this, "Kalın");
@@ -48,11 +47,11 @@ import app from "../singletonPattern/singletonPatternIndex.js";
                 const div = document.getElementById("myDiv");
                 const ozellikAdi = document.createElement("span");
                 const br = document.createElement("br"); // satır sonu
-                const b = document.createElement("b"); // <b> etiketi oluştur
+                const b = document.createElement("b");
                 ozellikAdi.textContent = `${koleksiyon.siniflar.get('kalin').title}: `;
-                b.textContent = `${mesaj}`;   // kullanıcıdan gelen veriyi güvenli şekilde ekle
+                b.textContent = `${mesaj}`;
 
-                div.append(ozellikAdi, b, br); // güvenli biçimde DOM’a ekle
+                div.append(ozellikAdi, b, br);
                 console.log(`kalin: "${mesaj}"`);
             }
         }
@@ -202,9 +201,9 @@ import app from "../singletonPattern/singletonPatternIndex.js";
         }
 
         // --- FACTORY PATTERN (Fabrika Kalıbı) ---
-        // Burası efekt üretim bandı. Ne istersen onu üretiyor.
-        // "bana bir 'kalin' çek" diyorsun, o sana 'new kalin()' veriyor.
-        class efektFabrikasi { // Fabrika kalıbı dediğin budur işte.
+        // İstenen efekt tipine göre ilgili sınıfın bir nesnesini (instance) oluşturur.
+        // Bu, 'new' anahtar kelimesini doğrudan kullanmaktan kaçınarak esneklik sağlar.
+        class efektFabrikasi {
             efektSec(tip) {
                 const EfektSinifi = koleksiyon.sinifGetir(tip);
                 if (EfektSinifi) {
@@ -216,18 +215,18 @@ import app from "../singletonPattern/singletonPatternIndex.js";
 
 
 
-        // Koleksiyondaki tüm efektleri hop diye bir diziye atıyoruz. Iterator saolsun.
+        // Iterator pattern sayesinde koleksiyondaki tüm efekt isimlerini bir diziye aktar.
         const efektListesi = [...koleksiyon];
         console.log("efektListesi:", efektListesi);
         console.log("Koleksiyon Map'i:", koleksiyon.siniflar);
 
-        // Bu fonksiyon bizim amele. Ver listeyi, çizsin ekrana.
+        // Verilen efekt listesini alıp sırayla ekrana çizen fonksiyon.
         function efektleriCiz(cizilecekEfektler) {
             const efektler = new efektFabrikasi();
             const mesaj = "Mehmet Yanıkoğlu";
             const div = document.getElementById("myDiv");
 
-            // Ortalığı bir temizleyelim, sonra yine batırırız.
+            // Her çizim öncesi önceki içeriği temizle.
             div.innerHTML = "";
 
             for (let i = 0; i < cizilecekEfektler.length; i++) {
@@ -235,17 +234,17 @@ import app from "../singletonPattern/singletonPatternIndex.js";
                 const efektNesnesi = efektler.efektSec(efektTipi);
                 efektNesnesi.olustur(mesaj);
 
-                // Sonuncusu değilse araya bir çizgi çekelim de karışmasın.
+                // Efektler arasına ayırıcı olarak bir çizgi ekle.
                 if (i < cizilecekEfektler.length - 1) {
                     div.append(document.createElement("hr"));
                 }
             }
         }
 
-        // Sayfa açılır açılmaz bütün marifetlerimizi bir dökelim.
+        // Sayfa ilk yüklendiğinde tüm efektleri göster.
         efektleriCiz(efektListesi);
 
-        // Şimdi de menüyü hazırlayalım. Checkbox'lar geliyor!
+        // Koleksiyondaki her efekt için bir checkbox oluştur ve menüye ekle.
         const myUl = document.getElementById("myUl");
         for (const [isim, deger] of koleksiyon.siniflar) {
             const li = document.createElement("label");
@@ -260,35 +259,34 @@ import app from "../singletonPattern/singletonPatternIndex.js";
             console.log(x)
         }
 
-        // "Kimler seçilmiş bi bakalım" fonksiyonu.
+        // Seçili olan tüm checkbox'ların değerlerini (efekt isimlerini) bir dizi olarak döndürür.
         function seciliEfektleriAl() {
             const secilen = document.querySelectorAll('input[name="efekt"]:checked');
-            // Seçilenleri topla, dizi yap, isimlerini (value) al, tamamdır.
             return Array.from(secilen).map(checkbox => checkbox.value);
         }
 
         const myDiv2 = document.getElementById("myDiv2");
         const btn = document.createElement("BUTTON");
-        btn.textContent = "Seçilenleri Uygula"; // Buton metnini eklemenin daha kısa yolu.
+        btn.textContent = "Seçilenleri Uygula";
         myDiv2.append(btn);
 
         btn.addEventListener("click", () => {
-            // Butona tıklandığında, o an seçili olan efektleri al.
+            // Butona tıklandığında, seçili olan efektleri al.
             const secilenEfektler = seciliEfektleriAl();
             const secimSayisi = secilenEfektler.length;
             console.log(`Seçilen Efektler (${secimSayisi} tane):`, secilenEfektler);
 
-            // Abartmayalım lütfen, 3'ten az 7'den çok olmasın.
+            // Kullanıcının belirli bir aralıkta seçim yapmasını sağla.
             if (secimSayisi < 3 || secimSayisi > 7) {
                 alert(`Lütfen en az 3, en fazla 7 efekt seçiniz. Siz ${secimSayisi} tane seçtiniz.`);
-                return; // Uymazsa yol ver gitsin.
+                return; // Koşul sağlanmazsa işlemi durdur.
             }
 
-            // Her şey yolundaysa, seçilenleri çizdirelim.
+            // Seçim geçerliyse, seçilen efektleri ekrana çizdir.
             efektleriCiz(secilenEfektler);
         });
 
-        // Ve final! Yaptığımız sanat eserini indiriyoruz.
+        // Oluşturulan görseli resim olarak indirmek için bir buton ekle.
         const exportBtn = document.createElement("BUTTON");
         exportBtn.textContent = "Resim Olarak İndir";
         myDiv2.append(exportBtn);
@@ -298,20 +296,20 @@ import app from "../singletonPattern/singletonPatternIndex.js";
 
 
         exportBtn.addEventListener("click", () => {
-            // Resme dönüştürülecek olan div'i seç.
+            // Resme dönüştürülecek olan DOM elementini seç.
             const divToExport = document.getElementById("myDiv");
 
-            // html2canvas'e diyoruz ki "Al şu div'i, resim yap!". O da "Tamamdır, bitince haber veririm (Promise)" diyor.
-            html2canvas(divToExport, { scale: 2 }).then(canvas => {// html2 canvas kütüphanesini eklemeyi unutma
-                // Canvas'ı bir resim URL'sine (data URL) çevir.
+            // html2canvas kütüphanesi ile seçilen div'i bir canvas elementine çiz.
+            html2canvas(divToExport, { scale: 2 }).then(canvas => {
+                // Canvas'ı PNG formatında bir data URL'ine dönüştür.
                 const imageURL = canvas.toDataURL("image/png");
 
-                // Görünmez bir link oluşturup indirme işlemini tetikliyoruz. Klasik numara.
+                // İndirme işlemini tetiklemek için geçici bir <a> elementi oluştur.
                 const downloadLink = document.createElement('a');
                 downloadLink.href = imageURL;
                 downloadLink.download = 'efektli_resim.png'; // İndirilecek dosyanın adı.
 
-                // Linke tıkla, işi bitince de ortadan kaybolsun.
+                // Linke programatik olarak tıkla ve indirmeyi başlat.
                 downloadLink.click();
             });
         });
