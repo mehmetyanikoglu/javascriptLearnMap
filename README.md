@@ -4,7 +4,7 @@ Bu repo, çeşitli JavaScript, HTML ve CSS mini projelerini içermektedir. Her p
 
 ## Canlı Demo
 
-Projenin Netlify üzerinde yayınlanmış canlı versiyonuna **[BURADAN ULAŞABİLİRSİNİZ](https://68fe6015ab05ba00088cb608--kezateam.netlify.app/)**.
+Projenin Netlify üzerinde yayınlanmış canlı versiyonuna **[BURADAN ULAŞABİLİRSİNİZ](https://kezateam.netlify.app/)**.
 
 ## Projeler
 
