@@ -1,5 +1,5 @@
-.test{
-    margin-left: 40px;
+.test {
+  margin-left: 40px;
 }
 
 .center {
@@ -7,15 +7,22 @@
   place-items: center;
 }
 
-.shadowProperty{
+.shadowProperty {
   box-shadow: 5px 10px 18px #888888;
-  background-color: #fffffff5!important;
+  background-color: #fffffff5 !important;
 }
 
-.navbar{
+.mixPatternCard {
+  box-shadow: 5px 10px 18px #888888;
+  background-color: #ffffff !important;
+ 
+}
+
+.navbar {
   background-color: rgb(24, 24, 24);
+ 
 }
 
-.baslik{
+.baslik {
   margin-top: 100px;
 }

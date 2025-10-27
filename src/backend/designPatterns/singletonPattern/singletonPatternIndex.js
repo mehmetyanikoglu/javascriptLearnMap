@@ -1,6 +1,6 @@
 // === Akıllı Kod Kopyalayıcı (Strategy + Factory + Singleton Pattern) ===
 
-// 1️⃣ Strategy: dosya alma yöntemi
+// 1️ Strategy: dosya alma yöntemi
 class FetchStrategy {
   async getContent(filePath) {
     const res = await fetch(filePath);
@@ -9,7 +9,7 @@ class FetchStrategy {
   }
 }
 
-// 2️⃣ Factory: uygun stratejiyi oluşturur
+// 2️ Factory: uygun stratejiyi oluşturur
 class StrategyFactory {
   static create(type = "fetch") {
     switch (type) {
@@ -20,7 +20,7 @@ class StrategyFactory {
   }
 }
 
-// 3️⃣ CodeCleaner: gereksiz satırları siler
+// 3️ CodeCleaner: gereksiz satırları siler
 class CodeCleaner {
   static clean(content) {
     return content
@@ -38,7 +38,7 @@ class CodeCleaner {
   }
 }
 
-// 4️⃣ CodeManager: yükler, temizler, panoya kopyalar
+// 4️ CodeManager: yükler, temizler, panoya kopyalar
 class CodeManager {
   constructor(strategy) {
     this.strategy = strategy;
@@ -47,37 +47,47 @@ class CodeManager {
   async copyFileToClipboard(filePath) {
     try {
       let content = await this.strategy.getContent(filePath);
+
+      // --- GÜVENLİK KONTROLÜ ---
+      // Eğer fetch, dosyayı bulamaz ve sunucu index.html'i geri döndürürse,
+      // kopyalamayı engelle ve hata ver.
+      if (content.trim().startsWith("<!doctype html>")) {
+        throw new Error(`İstenen dosya sunucuda bulunamadı: ${filePath}`);
+      }
+
       const cleaned = CodeCleaner.clean(content);
       await navigator.clipboard.writeText(cleaned);
-      alert(`✅ ${filePath} temizlenip panoya kopyalandı!`);
+      alert(`✅ Panoya kopyalandı!`);/*alert(`✅ ${filePath} temizlenip panoya kopyalandı!`); */
     } catch (err) {
-      alert(`❌ Hata: ${err.message}`);
+      alert(`❌ Kopyalama Hatası: ${err.message}`);
     }
   }
 }
 
-// 5️⃣ App (Singleton): olayları yönetir
+// 5️ App (Singleton): olayları yönetir
 class App {
   constructor() {
     if (App.instance) return App.instance;
     App.instance = this;
 
     this.manager = new CodeManager(StrategyFactory.create("fetch"));
-    this.initEvents();
+    this.initCopyButtons();
   }
 
-  initEvents() {
-    document.querySelectorAll(".copy-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const file = btn.dataset.file;
-        this.manager.copyFileToClipboard(file);
+  // Bu scriptin çalıştığı sayfadaki TÜM ".copy-btn" class'ına sahip butonları bulur ve dinler.
+  initCopyButtons() {
+    // DOM'un tamamen yüklendiğinden emin olalım.
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".copy-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const file = btn.dataset.file;
+          this.manager.copyFileToClipboard(file);
+        });
       });
     });
   }
 }
 
 // 6️⃣ Uygulama başlat
-new App();
-
-
-//** AL SANA PROJE SCRİPT DOSYALARINDAN KODLARI PANOYA KOPYALAR ÜSTELİK YORUM SATIRLARINIDA TEMİZLER HEMDE HERYERDEN ÇEKİLEBİLİR YAPI KULLANIR. */
+const app = new App();
+export default app;

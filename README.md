@@ -1,4 +1,4 @@
-# JavaScript Mini Projeler Koleksiyonu
+# JavaScript Projeler Koleksiyonu
 
 Bu repo, çeşitli JavaScript, HTML ve CSS mini projelerini içermektedir. Her proje, belirli bir JavaScript konseptini veya web geliştirme tekniğini uygulamak için tasarlanmıştır.
 
@@ -8,7 +8,7 @@ Projenin Netlify üzerinde yayınlanmış canlı versiyonuna **[BURADAN ULAŞAB�
 
 ## Projeler
 
-Bu koleksiyonda aşağıdaki mini uygulamalar bulunmaktadır:
+### Mini Projeler
 
 - **Bilimsel Hesap Makinesi:** Dört işlem ve diğer bilimsel fonksiyonları içeren bir hesap makinesi.
 - **Ortalama Hesaplama:** Vize ve final notlarına göre ders ortalamasını hesaplar.
@@ -20,7 +20,39 @@ Bu koleksiyonda aşağıdaki mini uygulamalar bulunmaktadır:
 - **TYT Puan Hesaplama:** Ders netleri ve okul puanına göre TYT puanını tahmin eder.
 - **Çarpım Tablosu:** Döngü kullanarak çarpım tablosunu oluşturur.
 - **Asal Sayı Bulma:** Girilen bir sayının asal olup olmadığını kontrol eder.
-- **Singleton Tasarım Deseni:** Singleton tasarım desenini açıklayan bir örnek.
+- **Todo List Uygulaması:** Notları kaydetmek için bir uygulama. *(Not: Geliştirme aşamasındadır. MongoDB entegrasyonu gibi özellikler eklenmektedir.)*
+
+### Tasarım Deseni (Design Pattern) Projeleri
+
+- **Singleton Pattern Örneği:** Singleton tasarım deseninin ne olduğunu, nerelerde kullanıldığını ve nasıl uygulandığını gösteren interaktif bir sayfa.
+- **Mix Pattern - Word App:** Birden fazla tasarım deseninin bir arada kullanıldığı bir metin efekt uygulaması.
+  - **Kullanılan Desenler:** Registry, Iterator, Factory.
+- **Efektleri Yeniden Kullanma Örneği:** "Word App" projesindeki efekt motorunun, farklı bir sayfada nasıl modüler bir şekilde yeniden kullanıldığını gösteren bir örnek.
+
+## Projede Kullanılan Tasarım Desenleri (Design Patterns)
+
+Bu projede, kodun daha modüler, esnek ve yeniden kullanılabilir olmasını sağlamak için çeşitli tasarım desenlerinden yararlanılmıştır.
+
+### Singleton Pattern
+
+Bir sınıftan yalnızca **tek bir nesne** oluşturulmasını garanti eder ve bu nesneye her yerden erişilebilen global bir erişim noktası sağlar.
+
+*   **Kullanıldığı Yer:** "Akıllı Kod Kopyalayıcı" modülü (`singletonPatternIndex.js`).
+*   **Amaç:** Uygulama boyunca kopyalama işlemlerini yönetecek olan `App` nesnesinin bir tane olmasını sağlamak. Bu sayede, bu modül hangi sayfaya dahil edilirse edilsin, her zaman aynı nesne üzerinden çalışır ve kaynakları verimli kullanır.
+
+### Registry Pattern
+
+Nesnelerin veya sınıfların merkezi bir "kayıt defterine" kaydedilmesini ve ihtiyaç duyulduğunda bu defterden isimleriyle çağrılmasını sağlar.
+
+*   **Kullanıldığı Yer:** "Mix Pattern - Word App" projesindeki `sinifKoleksiyonu`.
+*   **Amaç:** Tüm metin efekti sınıflarını (`kalin`, `golge` vb.) merkezi bir `Map` üzerinde toplamak. Bu sayede yeni bir efekt eklemek veya mevcut bir efekti çağırmak kolaylaşır.
+
+### Factory Pattern
+
+Nesne oluşturma mantığını bir "fabrika" sınıfının içine gizler. Hangi türde nesne oluşturulacağına, verilen parametrelere göre bu fabrika karar verir.
+
+*   **Kullanıldığı Yer:** "Mix Pattern - Word App" projesindeki `efektFabrikasi`.
+*   **Amaç:** `'kalin'` gibi bir string verildiğinde, `new kalin()` nesnesini otomatik olarak oluşturup döndürmek. Bu, `if/else` veya `switch` blokları olmadan yeni efekt türleri eklemeyi çok kolaylaştırır.
 
 ## Kullanılan Teknolojiler
 

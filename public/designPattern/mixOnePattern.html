@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/backend/css/mixOnePattern.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>nodejsmyprojects</title>
+</head>
+
+<body class="bg-dark">
+
+    <!-- As a link -->
+    <nav class="navbar navbar-light navbar fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../../index.html">
+                <h1 class="test text-white">Anasayfa</h1>
+            </a>
+        </div>
+    </nav>
+
+    <div class="baslik"></div><!--css eklemeyi unutma-->
+    <h1 class="test text-white">Mix Pattern - Word App</h1>
+    <br /><br />
+    <div>
+
+
+        <!------------------------------------------singleton pattern-------------------------------------->
+        <div class="container center">
+            <div class="row d-grid gap-4 d-md-flex row-cols-auto">
+
+
+
+                <div class="col">
+                    <!--Kullanım Örnekleri-->
+                    <div class="card shadowProperty" style="width: 25rem;">
+                        <div class="card-body">
+                            <h4 class="card-title center">Mix Patterns</h4>
+                            <br />
+                            <!--liste-->
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <p>( Factory | Registry | Iterator ) Patterns</p>
+                                    <button class="btn btn-dark btn-sm me-md-2" type="button" data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Kodları
+                                        Göster</button>
+                                    <button class="btn btn-dark btn-sm me-md-2" type="button" data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasRight2" aria-controls="offcanvasRight">Projeyi
+                                        Göster</button>
+                                    <!--modal right-->
+                                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                                        aria-labelledby="offcanvasRightLabel">
+                                        <div class="offcanvas-header">
+                                            <h3 id="offcanvasRightLabel">Word App Kodları</h3>
+                                            <button type="button" class="btn-close text-reset"
+                                                data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                        </div>
+                                        <div class="offcanvas-body">
+                                            <h5>Açıklama</h5>
+                                            <p>Factory Pattern | Registry Pattern | Iterator Pattern</p>
+                                            <button data-file="/src/backend/designPatterns/mixPattern/mixOnePattern1.js"
+                                                class="copy-btn btn btn-outline-dark">Kodu Kopyala</button><br /><br />
+
+
+                                            <img src="../../src/backend/images/designPatterns/mixOnePattern/mixOnePattern.png"
+                                                class="img-fluid" alt="...">
+                                        </div>
+                                    </div>
+                                    <!--modal right-->
+                                    <!--modal left-->
+                                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight2"
+                                        aria-labelledby="offcanvasRightLabel">
+                                        <div class="offcanvas-header">
+                                            <h3 id="offcanvasRightLabel">Word App</h3>
+                                            <button type="button" class="btn-close text-reset"
+                                                data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                        </div>
+                                        <div class="offcanvas-body projectView">
+                                            <h5>Açıklama</h5>
+                                            <p>Proje Backend odaklı yapılmıştır. frontend kısmına ağırlık verilmemiştir.
+                                            </p>
+                                            <p>Factory Pattern | Registry Pattern | Iterator Pattern</p>
+                                            <br /><br />
+                                            <div id="myDiv">
+                                            </div>
+                                            <br />
+                                            <div id="myDiv2">
+                                                <ul id="myUl">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--modal left-->
+                                </li>
+                                <!--liste-->
+                        </div>
+                    </div>
+                    <!---------------------->
+                </div>
+
+
+
+
+            </div>
+        </div>
+        <!------------------------------------------singleton pattern-------------------------------------->
+
+
+        <br /><br />
+        <hr><br />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <script type="module" src="/src/backend/designPatterns/mixPattern/mixOnePattern.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+
+</body>
+
+</html>

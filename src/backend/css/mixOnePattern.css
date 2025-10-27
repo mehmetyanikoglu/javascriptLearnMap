@@ -1,0 +1,48 @@
+.test {
+  margin-left: 40px;
+}
+
+.projectView {
+  background-color: rgb(255, 255, 255);
+}
+
+.center {
+  display: grid;
+  place-items: center;
+}
+
+.shadowProperty {
+  box-shadow: 5px 10px 18px #888888;
+  background-color: #fffffff5 !important;
+}
+
+.baslik {
+  margin-top: 100px;
+}
+
+.navbar {
+  background-color: rgb(24 24 24 / 43%);
+}
+
+.offcanvas-end {
+  /*   modal   end sağ  */
+  top: 0;
+  right: 0;
+  width: 1080px !important;
+  border-left: 1px solid rgba(0, 0, 0, .2);
+  transform: translateX(100%);
+}
+
+.offcanvas-start {
+  /*   modal   start sol */
+  top: 0;
+  right: 0;
+  width: 1080px !important;
+  border-left: 1px solid rgb(255, 255, 255);
+  transform: translateX(100%);
+}
+
+#myUl{
+  margin-bottom: 20px;
+
+}
