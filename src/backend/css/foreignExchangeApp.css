@@ -1,0 +1,93 @@
+        .foreign-exchange-app {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        .foreign-exchange-app .container {
+            width: 100%;
+            max-width: 900px;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .foreign-exchange-app h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        .foreign-exchange-app .selector-container {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .foreign-exchange-app label {
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .foreign-exchange-app select {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .foreign-exchange-app table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th,
+        td {
+            padding: 0.8rem 1rem;
+            text-align: left;
+            /*border-bottom: 1px solid #ddd;*/
+        }
+
+        .foreign-exchange-app thead th {
+            background-color: #3498db;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .foreign-exchange-app tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .foreign-exchange-app tbody tr:hover {
+            background-color: #f1c40f;
+            color: #333;
+        }
+
+        .foreign-exchange-app .kurDegerHucresi {
+            border-bottom-right-radius: 50px;
+            font-size: 20px;
+        }
+
+        .foreign-exchange-app .paraBirimiHucresi {
+            border-bottom-right-radius: 50px;
+            font-size: 20px;
+        }
+
+        .foreign-exchange-app .kurSemboluHucresi {
+            border-bottom-right-radius: 50px;
+            font-size: 20px;
+        }
+
+        .foreign-exchange-app .kurKoduHucresi {
+            border-bottom-right-radius: 50px;
+            font-size: 20px;
+        }
