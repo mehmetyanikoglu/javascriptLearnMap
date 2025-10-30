@@ -15,9 +15,10 @@ asal olmayan sayı ise 18 gibi örneğin 18/9,6,3,2 gibi sayılarada bölündü�
 
 */
 
-const baslat = document.getElementById("baslat");
-const sonuc = document.getElementById("sonuc");
-
+const sayiInput = document.getElementById("sayiInput");
+const kontrolEtBtn = document.getElementById("kontrolEtBtn");
+const sonucAlani = document.getElementById("sonucAlani");
+const sonucMesaji = document.getElementById("sonucMesaji");
 
 function asalMi(sayi) {
     if (sayi <= 1) return false;      // 1 ve altı asal değil
@@ -31,20 +32,23 @@ function asalMi(sayi) {
     return true;
 }
 
-baslat.addEventListener("click", () => {
+kontrolEtBtn.addEventListener("click", () => {
+    const sayi = Number(sayiInput.value);
 
+    if (sayiInput.value === "" || sayi < 0) {
+        alert("Lütfen geçerli bir pozitif sayı giriniz.");
+        return;
+    }
 
-    let userData = Number(prompt("sayı giriniz"))
-    let data = asalMi(userData);//userData boolean
+    const sonuc = asalMi(sayi);
 
-        if(data){
-            alert("asal sayıdır")
-        }else{
-            alert("asal değil")
-        }
+    if (sonuc) {
+        sonucMesaji.textContent = `${sayi} bir ASAL sayıdır.`;
+        sonucMesaji.className = "fs-4 fw-bold text-success";
+    } else {
+        sonucMesaji.textContent = `${sayi} bir asal sayı DEĞİLDİR.`;
+        sonucMesaji.className = "fs-4 fw-bold text-danger";
+    }
 
-
-
-
-})
-
+    sonucAlani.style.display = "block";
+});

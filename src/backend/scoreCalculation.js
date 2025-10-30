@@ -11,59 +11,50 @@
 */
 
 
-const baslat = document.getElementById("baslat");
-const sonuc = document.getElementById("sonuc");
-const cikis = document.getElementById("cikis");
+const hesaplaBtn = document.getElementById("hesapla");
 
-baslat.addEventListener("click", () => {
+const turkceDogruInput = document.getElementById("turkceDogru");
+const turkceYanlisInput = document.getElementById("turkceYanlis");
+const matDogruInput = document.getElementById("matDogru");
+const matYanlisInput = document.getElementById("matYanlis");
+const sosyalDogruInput = document.getElementById("sosyalDogru");
+const sosyalYanlisInput = document.getElementById("sosyalYanlis");
+const fenDogruInput = document.getElementById("fenDogru");
+const fenYanlisInput = document.getElementById("fenYanlis");
+const okulPuaniInput = document.getElementById("okulPuani");
 
-    let turkceDogru, turkceYanlis = 0;
-    let matematikDogru, mateamtikYanlis = 0;
-    let sosyalDogru, sosyalYanlis = 0;
-    let fenDogru, fenYanlis = 0;
-    let puan = 0;
-    let okulPuani;
+const sonucAlani = document.getElementById("sonucAlani");
+const puanSonuc = document.getElementById("puanSonuc");
+const toplamNet = document.getElementById("toplamNet");
 
-    let yeniSatir = "\r\n";
+hesaplaBtn.addEventListener("click", () => {
+    const turkceDogru = Number(turkceDogruInput.value) || 0;
+    const turkceYanlis = Number(turkceYanlisInput.value) || 0;
+    const matDogru = Number(matDogruInput.value) || 0;
+    const matYanlis = Number(matYanlisInput.value) || 0;
+    const sosyalDogru = Number(sosyalDogruInput.value) || 0;
+    const sosyalYanlis = Number(sosyalYanlisInput.value) || 0;
+    const fenDogru = Number(fenDogruInput.value) || 0;
+    const fenYanlis = Number(fenYanlisInput.value) || 0;
+    const okulPuani = Number(okulPuaniInput.value) || 0;
 
-    let mesaj =
-        "TYT puan hesaplama uygulamasına hoşgeldiniz" + yeniSatir
-        + "1-Puan hesapla" + yeniSatir
-        + "2-Çıkış yap";
-
-    //alert mesaj
-
-    let secim = prompt(mesaj);
-
-    switch (secim) {
-        case "1":
-            okulPuani = Number(prompt("Okul puanını giriniz"))
-            turkceDogru = Number(prompt("Türkçe doğru sayısı giriniz"))
-            turkceYanlis = Number(prompt("Türkçe Yanlış sayısı giriniz"))
-
-            matematikDogru = Number(prompt("Matematik doğru sayısı giriniz"))
-            mateamtikYanlis = Number(prompt("Matematik Yanlış sayısı giriniz"))
-
-            sosyalDogru = Number(prompt("Sosyal Bilimler doğru sayısı giriniz"))
-            sosyalYanlis = Number(prompt("Sosyal Bilimler Yanlış sayısı giriniz"))
-
-            fenDogru = Number(prompt("Fen Bilimleri doğru sayısı giriniz"))
-            fenYanlis = Number(prompt("Fen Bilimleri Yanlış sayısı giriniz"))
-
-            let dogruSayisi = turkceDogru + matematikDogru + sosyalDogru + fenDogru;
-            let yanlisSayisi = turkceYanlis + mateamtikYanlis + sosyalYanlis + fenYanlis;
-
-            let kalanDogruSayisi = dogruSayisi - (yanlisSayisi / 4);// 4 yanlış bir doğruyu götürür
-            puan = (kalanDogruSayisi * 4) + 100 + okulPuani;
-            alert("TYT puan sonucu: " + puan);
-            sonuc.textContent = puan
-            break;
-        case "2":
-            alert("uygulamadan çıkış yapıldı.")
-            cikis.textContent = "Çıkış yapılmıştır.";
-            cikis.style.color= "red";
-            break;
-        default:
-            break;
+    if (okulPuani === 0) {
+        alert("Lütfen okul puanınızı giriniz.");
+        return;
     }
-})
+
+    const turkceNet = turkceDogru - (turkceYanlis / 4);
+    const matNet = matDogru - (matYanlis / 4);
+    const sosyalNet = sosyalDogru - (sosyalYanlis / 4);
+    const fenNet = fenDogru - (fenYanlis / 4);
+
+    const toplamDogruSayisi = turkceDogru + matDogru + sosyalDogru + fenDogru;
+    const toplamYanlisSayisi = turkceYanlis + matYanlis + sosyalYanlis + fenYanlis;
+    const toplamNetSayisi = toplamDogruSayisi - (toplamYanlisSayisi / 4);
+
+    const puan = (toplamNetSayisi * 4) + 100 + okulPuani;
+
+    puanSonuc.textContent = puan.toFixed(3);
+    toplamNet.textContent = toplamNetSayisi.toFixed(2);
+    sonucAlani.style.display = "block";
+});
