@@ -7,30 +7,35 @@ final %40
 
 */
 
-const baslat = document.getElementById("baslat");
+const vize1Input = document.getElementById("vize1");
+const vize2Input = document.getElementById("vize2");
+const finalInput = document.getElementById("final");
+const hesaplaBtn = document.getElementById("hesapla");
+const sonucAlani = document.getElementById("sonucAlani");
+const ortalamaSonuc = document.getElementById("ortalamaSonuc");
+const durumMesaji = document.getElementById("durumMesaji");
 
-baslat.addEventListener("click", () => {
-    let vize1 = Number(prompt("Vize 1 notunu giriniz. "))
-    let vize2 = Number(prompt("Vize 2 notunu giriniz. "))
+hesaplaBtn.addEventListener("click", () => {
+    const vize1 = Number(vize1Input.value);
+    const vize2 = Number(vize2Input.value);
+    const final = Number(finalInput.value);
 
-    let final = Number(prompt("Final notunu giriniz. "))
-
-    let ortalama = (vize1 * 0.3) + (vize2 * 0.3) + (final * 0.4);
-
-    if (ortalama >= 60) {
-        alert("Ortalamanız: " + ortalama + "--> Tebrikler dersten geçtiniz")
-        console.log("tebrikler dersten geçtiniz")
-    } else {
-        alert("Ortalamanız: " + ortalama + "--> kaldınız, geçmiş olsun :(")
-        console.log("kaldınız, geçmiş olsun :(")
+    if (vize1Input.value === "" || vize2Input.value === "" || finalInput.value === "") {
+        alert("Lütfen tüm not alanlarını doldurunuz.");
+        return;
     }
 
+    const ortalama = (vize1 * 0.3) + (vize2 * 0.3) + (final * 0.4);
 
+    ortalamaSonuc.textContent = ortalama.toFixed(2); // Ortalamayı 2 ondalık basamakla göster
 
-})
+    if (ortalama >= 60) {
+        durumMesaji.textContent = "🎉 Tebrikler, dersi geçtiniz! 🎉";
+        durumMesaji.className = "fs-5 text-success";
+    } else {
+        durumMesaji.textContent = "😔 Maalesef dersten kaldınız. 😔";
+        durumMesaji.className = "fs-5 text-danger";
+    }
 
-
-
-
-
-
+    sonucAlani.style.display = "block"; // Sonuç alanını görünür yap
+});

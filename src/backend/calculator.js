@@ -15,17 +15,6 @@
     const kupkok = document.getElementById("kupkok");
 
     let sayilar = 0;
-    let sayis;
-    const tusBtn = document.querySelectorAll(".number-btn");
-
-    tusBtn.forEach(button =>{
-        button.addEventListener("click",()=>{
-            const test = button.textContent;
-            Numbersayis += test; // burada kalmıştık butonları eklemeye çalışıyoruz
-            
-            console.log(sayis);
-        })
-    })
 
     class Islemler {
       toplamaYap() {
@@ -272,8 +261,3 @@
     reset.addEventListener("click", () => {
       islemNesnesi.hepsiniSil();
     })
-
-
-
-
-

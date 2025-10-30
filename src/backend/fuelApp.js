@@ -1,87 +1,54 @@
-const baslat = document.getElementById("baslat");
+const yakitTipiSelect = document.getElementById("yakitTipi");
+const yakitLitresiInput = document.getElementById("yakitLitresi");
+const bakiyeInput = document.getElementById("bakiye");
+const hesaplaBtn = document.getElementById("hesapla");
+const sonucAlani = document.getElementById("sonucAlani");
+const sonucMesaji = document.getElementById("sonucMesaji");
+
 /*
 | Yakıt Türü                      | Fiyat (TL/Litre) |
 | ------------------------------- | ---------------- |
 | **Kurşunsuz Benzin (95 Oktan)** | 52,34            |
 | **Motorin (Diesel)**            | 55,44            |
 | **LPG (Otogaz)**                | 27,71            |
-
-
 */
-baslat.addEventListener("click", () => {
+const fiyatlar = {
+    "1": 52.34, // Dizel
+    "2": 55.44, // Motorin
+    "3": 27.71  // LPG
+};
 
-    let dizel = 52.34;//tip 1
-    let motorin = 55.44;//tip 2
-    let lpg = 27.71;// tip 3
+hesaplaBtn.addEventListener("click", () => {
+    const yakitTipi = yakitTipiSelect.value;
+    const yakitLitresi = Number(yakitLitresiInput.value);
+    const bakiye = Number(bakiyeInput.value);
 
-    const yeniSatir = '\r\n';
-    const yakitMetni =
-        "1-Dizel: " + dizel + " TL" + yeniSatir +
-        "1-Motorin: " + motorin + " TL" + yeniSatir +
-        "1-LPG: " + lpg + " TL" + yeniSatir
-        + "yakıt türünü seçiniz";
-    ;
-
-    let yakitTipi = Number(prompt(yakitMetni));
-    let yakitLitresi = Number(prompt("yakıt litresini giriniz"))
-    let bakiye = Number(prompt("bakiyenizi giriniz"))
-
-    if (yakitTipi === 1) {
-        //DİZEL
-        let odenecekTutar = dizel * yakitLitresi;
-        odenecekTutar = odenecekTutar.toFixed(2)
-        if (odenecekTutar < bakiye) {
-            //bakiye yeterli
-            alert("Yakıt alma işlemi başarılı" + yeniSatir + "para üstü:" + (bakiye - odenecekTutar).toFixed(2));
-        } else {
-            // bakiye yeterli değil
-
-            alert(
-                "bakiyeniz yeterli değildir." + yeniSatir
-                + "Ödenecek tutar: " + odenecekTutar + yeniSatir
-                + "Bakiye: " + bakiye + yeniSatir
-                + "Eksik tutar: " + (odenecekTutar - bakiye).toFixed(2)
-
-            );
-        }
-    } else if (yakitTipi === 2) {
-        //MOTORİN
-        let odenecekTutar = motorin * yakitLitresi;
-        odenecekTutar = odenecekTutar.toFixed(2)
-        if (odenecekTutar < bakiye) {
-            //bakiye yeterli
-            alert("Yakıt alma işlemi başarılı" + yeniSatir + "para üstü:" + (bakiye - odenecekTutar).toFixed(2));
-        } else {
-            // bakiye yeterli değil
-
-            alert(
-                "bakiyeniz yeterli değildir." + yeniSatir
-                + "Ödenecek tutar: " + odenecekTutar + yeniSatir
-                + "Bakiye: " + bakiye + yeniSatir
-                + "Eksik tutar: " + (odenecekTutar - bakiye).toFixed(2)
-
-            );
-        }
-    } else if (yakitTipi === 3) {
-        //LPG
-        let odenecekTutar = lpg * yakitLitresi;
-        odenecekTutar = odenecekTutar.toFixed(2)
-        if (odenecekTutar < bakiye) {
-            //bakiye yeterli
-            alert("Yakıt alma işlemi başarılı" + yeniSatir + "para üstü:" + (bakiye - odenecekTutar).toFixed(2));
-        } else {
-            // bakiye yeterli değil
-
-            alert(
-                "bakiyeniz yeterli değildir." + yeniSatir
-                + "Ödenecek tutar: " + odenecekTutar + yeniSatir
-                + "Bakiye: " + bakiye + yeniSatir
-                + "Eksik tutar: " + (odenecekTutar - bakiye).toFixed(2)
-
-            );
-        }
-    } else {
-        alert("lütfen geçerli bir yakıt türü seçiniz");
+    if (!yakitLitresi || !bakiye || yakitLitresi <= 0 || bakiye <= 0) {
+        alert("Lütfen geçerli litre ve bakiye bilgisi giriniz.");
+        return;
     }
-})
 
+    const birimFiyat = fiyatlar[yakitTipi];
+    const odenecekTutar = birimFiyat * yakitLitresi;
+
+    let mesaj = "";
+    let renk = "";
+
+    if (odenecekTutar <= bakiye) {
+        const paraUstu = bakiye - odenecekTutar;
+        mesaj = `✅ Yakıt alma işlemi başarılı! <br>
+                 Ödenen Tutar: <strong>${odenecekTutar.toFixed(2)} ₺</strong> <br>
+                 Para Üstü: <strong>${paraUstu.toFixed(2)} ₺</strong>`;
+        renk = "text-success";
+    } else {
+        const eksikTutar = odenecekTutar - bakiye;
+        mesaj = `❌ Bakiye yetersiz! <br>
+                 Ödenecek Tutar: <strong>${odenecekTutar.toFixed(2)} ₺</strong> <br>
+                 Eksik Tutar: <strong class="text-danger">${eksikTutar.toFixed(2)} ₺</strong>`;
+        renk = "text-warning";
+    }
+
+    sonucMesaji.innerHTML = mesaj;
+    sonucMesaji.className = `fs-5 ${renk}`;
+    sonucAlani.style.display = "block";
+});

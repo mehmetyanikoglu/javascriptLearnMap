@@ -4,19 +4,49 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
-    <title>Calculator</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Yol Ayrımı</title>
 </head>
 
-<body>
-    <a href="../index.html">
-        <button>Anasayfa</button>
-    </a>
-    <br /><br /><hr><br />
+<body class="bg-dark">
 
-    <h1>Yol Ayrımı Uygulaması</h1>
-    <p>Sayı ile 1,2,3 yollarından birini seçiniz</p>
-    <button id="yoluSec">Yolu Seç</button>
+    <!-- As a link -->
+    <nav class="navbar navbar-light navbar fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../index.html">
+                <h1 class="test text-white">Anasayfa</h1>
+            </a>
+        </div>
+    </nav>
+
+    <div class="baslik">
+        <h1 class="test text-white">Yol Ayrımı Uygulaması</h1>
+    </div>
+    <br /><br />
+
+    <div class="container mt-5 d-flex justify-content-center">
+        <div class="card shadowProperty text-center" style="width: 25rem;">
+            <div class="card-body">
+                <h5 class="card-title mb-3">Bir Maceraya Atıl!</h5>
+                <p id="hikaye" class="card-text">
+                    Eski bir haritanın peşinde, gizemli bir ormanın derinliklerindesin. Karşında üç farklı patika beliriyor. Her biri farklı bir maceraya açılıyor gibi görünüyor.
+                    <br><strong>Hangi yolu seçeceksin?</strong>
+                </p>
+                <div id="secimler" class="d-grid gap-2 col-8 mx-auto mt-4">
+                    <button id="yol1" class="btn btn-primary btn-lg">1. Patika: Yosunlu Taşlar</button>
+                    <button id="yol2" class="btn btn-danger btn-lg">2. Patika: Karanlık Mağara</button>
+                    <button id="yol3" class="btn btn-success btn-lg">3. Patika: Işıltılı Nehir</button>
+                </div>
+                <div id="sonucAlani" class="mt-4" style="display: none;">
+                    <hr>
+                    <p id="sonucMesaji" class="fs-5"></p>
+                    <button id="tekrarOyna" class="btn btn-secondary mt-2">Tekrar Oyna</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script type="module" src="/src/backend/crossRoads.js"></script>
 

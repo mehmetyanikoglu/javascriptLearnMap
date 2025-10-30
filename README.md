@@ -65,6 +65,28 @@ Bu projenin geliştirilmesinde aşağıdaki teknolojiler ve kütüphaneler kulla
 
 **Not:** Projeler tamamen istemci tarafında (client-side) çalıştığı için bir Node.js sunucusuna veya veritabanına ihtiyaç duymazlar.
 
+## Dosya Yapısı
+
+Projenin temel dosya ve klasör yapısı aşağıdaki gibidir. Bu yapı, kodun düzenli ve modüler kalmasına yardımcı olur.
+
+```
+.
+├── public/               # Herkesin erişebileceği statik dosyalar (HTML, resimler vb.).
+│   └── todoList.html     # Todo List uygulamasının arayüz dosyası.
+├── src/                  # Projenin ana kaynak kodları.
+│   └── backend/
+│       ├── css/          # Projelere özel CSS stil dosyaları.
+│       ├── designPatterns/ # Tasarım desenlerinin uygulandığı modüller.
+│       │   ├── mixPattern/
+│       │   └── singletonPattern/
+│       └── todoList.js   # Todo List uygulamasının istemci taraflı JavaScript mantığı.
+├── .gitignore            # Git tarafından izlenmemesi gereken dosya ve klasörler.
+├── index.html            # Projelerin listelendiği ana giriş sayfası.
+├── package.json          # Proje bağımlılıklarını ve script'lerini tanımlayan dosya.
+└── README.md             # Proje hakkındaki bu bilgilendirme dosyası.
+```
+*Not: `node_modules` klasörü, `package.json` dosyasında belirtilen bağımlılıkların indirildiği yerdir ve genellikle kaynak kontrol sistemlerine eklenmez.*
+
 ## Kurulum ve Yayınlama
 
 ### Yerel Makinede (Lokalde) Çalıştırma
