@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/backend/css/singletonPattern.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>nodejsmyprojects</title>
+</head>
+
+<body class="bg-dark">
+
+    <!-- As a link -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgb(24, 24, 24);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../../index.html">
+                <h4 class="test text-white"><i class="fas fa-arrow-left"></i> Geri Dön</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="https://www.mehmetyanikoglu.com/" target="_blank"
+                            role="button">CV Portfolio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white fs-5" href="#" id="socialDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            İletişim
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="socialDropdown">
+                            <li><a class="dropdown-item" href="https://github.com/mehmetyanikoglu" target="_blank"><i
+                                        class="fab fa-github"></i> Github</a></li>
+                            <li><a class="dropdown-item" href="https://www.linkedin.com/in/mehmet-yanikoglu/"
+                                    target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+                            <li><a class="dropdown-item" href="https://wa.me/+905431869107" target="_blank"><i
+                                        class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                            <li><a class="dropdown-item" href="tel:+905431869107"><i class="fas fa-phone"></i> Ara</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="https://x.com/mehmetyankoglu7" target="_blank"><i
+                                        class="fab fa-twitter"></i> X (Twitter)</a></li>
+                            <li><a class="dropdown-item" href="https://www.instagram.com/mehmetyanikoglu7/"
+                                    target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                            <li><a class="dropdown-item" href="https://www.facebook.com/mehmet.yankoglu/"
+                                    target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                            <li><a class="dropdown-item" href="https://tr.pinterest.com/mehmetbeyiniz07/"
+                                    target="_blank"><i class="fab fa-pinterest-p"></i> Pinterest</a></li>
+                            <li><a class="dropdown-item" href="mailto:mehmetyanikoglu@engineer.com"><i
+                                        class="fas fa-envelope"></i> E-posta</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="baslik"></div><!--css eklemeyi unutma-->
+    <h1 class="test text-white">Observer Pattern</h1>
+    <br /><br />
+    <div>
+
+
+        <!------------------------------------------singleton pattern-------------------------------------->
+        <div class="container center">
+            <div class="row d-grid gap-4 d-md-flex row-cols-auto">
+
+                <div class="col">
+                    <!--Olması Gerekenler-->
+                    <div class="card shadowProperty" style="width: 25rem;">
+                        <div class="card-body">
+                            <h4 class="card-title center">Olması Gerekenler</h4>
+                            <br />
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-danger">Bir nesne olayı yayınlar.</li>
+                                <li class="list-group-item list-group-item-danger">Diğerleri bu olayı dinler ve tepki verir.</li>
+                                
+                                <li class="list-group-item list-group-item-danger">Nesneler arasında gevşek bağlılık (loose coupling) sağlar.</li>
+                                <li class="list-group-item list-group-item-danger">Değişiklik olduğunda tek bir noktadan tüm ilgililere haber verilir.</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!---------------------->
+                </div>
+
+                <div class="col">
+                    <!--Nerelerde Kullanılır ?-->
+                    <div class="card shadowProperty" style="width: 25rem;">
+                        <div class="card-body">
+                            <h4 class="card-title center">Nerelerde Kullanılır ?</h4>
+                            <br />
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-success">📱 UI event sistemleri (buton tıklama, input değişimi)
+                                </li>
+                                <li class="list-group-item list-group-item-success">🔔 Bildirim sistemleri</li>
+                                <li class="list-group-item list-group-item-success">📊 React / Vue state değişimleri</li>
+                                <li class="list-group-item list-group-item-success">💬 Uygulama genel durumu (global
+                                    state)</li>
+                                <li class="list-group-item list-group-item-success">📰 Gerçek zamanlı uygulamalar (chat, haber, sensör takibi)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!---------------------->
+                </div>
+
+                <div class="col">
+                    <!--Kullanım Örnekleri-->
+                    <div class="card shadowProperty" style="width: 25rem;">
+                        <div class="card-body">
+                            <h4 class="card-title center">Kullanım Örnekleri</h4>
+                            <br />
+                            <!--liste-->
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-success">1. Observer Pattern Örneği&nbsp;&nbsp;
+                                    <button class="btn btn-dark btn-sm me-md-2" type="button" data-bs-toggle="offcanvas"
+                                        /*data-bs-target="#offcanvasRight"*/ aria-controls="offcanvasRight">Yakında..!</button>
+                                    <!--modal-->
+                                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                                        aria-labelledby="offcanvasRightLabel">
+                                        <div class="offcanvas-header">
+                                            <h3 id="offcanvasRightLabel">1. Basit Singleton Örneği</h3>
+                                            <button type="button" class="btn-close text-reset"
+                                                data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                        </div>
+                                        <div class="offcanvas-body">
+                                            <h5>Açıklama</h5>
+                                            <p>Her new Singleton() çağrısı yeni bir nesne yerine ilk oluşturulanı
+                                                döndürür.</p>
+                                            <button
+                                                data-file="/src/backend/designPatterns/singletonPattern/singletonPattern1.js"
+                                                class="copy-btn btn btn-outline-dark">Kodu Kopyala</button><br /><br />
+                                            <a type="button" target="_blank" href="https://www.geeksforgeeks.org/system-design/singleton-design-pattern-introduction/" 
+                                            class="btn btn-outline-dark">Daha fazla bilgi
+                                            </a>
+                                            <br /><br />
+                                            <img src="../../src/backend/images/designPatterns/singletonPattern/singletonPattern1.png"
+                                                class="img-fluid" alt="...">
+                                        </div>
+                                    </div>
+                                    <!--modal-->
+                                </li>
+                                <li class="list-group-item list-group-item-success">Örnek 2 Yakında</li>
+                                <li class="list-group-item list-group-item-success">Örnek 3 Yakında</li>
+                                <li class="list-group-item list-group-item-success">Örnek 4 Yakında</li>
+                                <li class="list-group-item list-group-item-success">Örnek 5 Yakında</li>
+                            </ul>
+                            <!--liste-->
+                        </div>
+                    </div>
+                    <!---------------------->
+                </div>
+
+
+
+
+            </div>
+        </div>
+        <!------------------------------------------singleton pattern-------------------------------------->
+
+
+        <br /><br />
+        <hr><br />
+
+        <script type="module" src="/src/backend/designPatterns/singletonPattern/singletonPatternIndex.js">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+
+</body>
+
+</html>
